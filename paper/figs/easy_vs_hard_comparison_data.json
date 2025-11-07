@@ -1,0 +1,30 @@
+{
+  "easy_samples": {
+    "description": "Full test set (240 samples, 93.75% baseline accuracy)",
+    "deberta": {
+      "F1": 0.767,
+      "Accuracy": 0.95,
+      "Coverage": 1.0
+    },
+    "foodlens": {
+      "F1": 0.789,
+      "Accuracy": 0.954,
+      "Coverage": 0.988
+    },
+    "f1_improvement_pct": 2.2
+  },
+  "hard_samples": {
+    "description": "Minority classes (25 samples, 60% baseline accuracy)",
+    "deberta": {
+      "F1": 0.476,
+      "Accuracy": 0.6,
+      "Coverage": 1.0
+    },
+    "foodlens": {
+      "F1": 0.51,
+      "Accuracy": 0.65,
+      "Coverage": 0.8
+    },
+    "f1_improvement_pct": 3.4
+  }
+}

@@ -1,0 +1,12 @@
+ an,paper_claim,actual_value,status,location,line
+Abstract: T and ECE,T=10.0 ECE=0.014,T=1.45 ECE=0.446,WRONG,Abstract,45
+Section 4.3: After calibration,T=10.0 ECE=0.014,T=1.45 ECE=0.446,WRONG,Section 4.3,213
+Section 4.3: Before calibration,ECE=0.042,ECE~0.44,WRONG,Section 4.3,213
+Table 3: FoodLens BAL,ECE=0.014,ECE=0.446,WRONG,Table 3,534
+Table 3: DeBERTa,ECE=0.042,ECE=0.446,WRONG,Table 3,533
+Section 5.3: Figure caption,ECE=0.042→0.014,ECE~0.44→0.446,WRONG,Section 5.3,376
+Section 5.6.2: No abstention,ECE=0.446,ECE=0.446,CORRECT,Section 5.6.2,406
+Section 5.6.2: With abstention,ECE=0.476,Unknown,VERIFY,Section 5.6.2,406
+Appendix: Calibration grid,T=10.0 ECE=0.014,T=1.45 ECE=0.446,WRONG,Appendix,862-864
+Conclusion: Calibration,T=10.0 ECE=0.014,T=1.45 ECE=0.446,WRONG,Conclusion,789
+

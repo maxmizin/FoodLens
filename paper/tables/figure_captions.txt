@@ -1,0 +1,12 @@
+================================================================================
+FoodLens Figure Captions
+================================================================================
+
+Figure 1: confidence_error_heatmap: Confidence-error heatmap reveals model calibration quality across classes and confidence levels. Darker colors indicate higher error rates, exposing regions of overconfidence where the model assigns high probabilities to incorrect predictions.
+
+Figure 2: ethical_flow_diagram: Ethical decision flow diagram illustrates the abstention mechanism as a safety gate. Low-confidence predictions (p < tau) trigger human review, while high-confidence cases proceed to automated decision, balancing efficiency with safety.
+
+Figure 3: risk_density_curve: Risk density curves show that incorrect predictions concentrate at higher risk levels, validating the abstention mechanism's ability to identify uncertain cases that benefit from human review.
+
+Figure 4: interpretability_panel: Comprehensive interpretability panel provides multi-faceted analysis: (A) confidence distributions, (B) per-class calibration, (C) accuracy-coverage trade-offs, and (D) per-class error rates, enabling holistic understanding of model behavior.
+

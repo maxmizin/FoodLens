@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: FoodLens - Selective Prediction for Nut Allergen Detection
+message: >
+  If you use this software, please cite both the software and the paper.
+authors:
+  - family-names: Mizin
+    given-names: Max
+date-released: 2025-10-27
+version: 1.0.0
+license: MIT
+repository-code: https://github.com/maxmizin/FoodLens
+abstract: >
+  FoodLens uses calibrated DeBERTa-v3-base for nut allergen classification
+  from ingredient text, featuring confidence-based selective abstention.
+keywords:
+  - machine learning
+  - food safety
+  - allergen detection
+  - selective prediction
+  - calibration
+

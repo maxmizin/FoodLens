@@ -1,0 +1,6 @@
+metric,value
+ECE_uncalibrated,0.05840101490418111
+ECE_calibrated_no_abstention,0.038327970852454485
+ECE_calibrated_with_abstention,0.038327970852454485
+temperature,1.45
+abstention_threshold,0.5

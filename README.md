@@ -1,3 +1,9 @@
+# View the Research Paper
+
+[![FoodLens paper preview](./FoodLens%20-%20Preview.png)](./FoodLens%20-%20Maximilian%20Mizin.pdf)
+
+Click the preview above to view the full research paper (PDF).
+
 # FoodLens: Selective Prediction for Nut Allergen Detection
 
 Calibrated DeBERTa-v3-base for nut allergen classification from ingredient text, featuring confidence-based selective abstention.
@@ -41,11 +47,6 @@ Build paper:
 make -C paper pdf
 ```
 
-Generate checksums:
-```bash
-python scripts/export/write_checksums.py
-```
-
 # Reproduce our paper results
 
 Evaluation is frozen and verified with provided CSV files and SHA256 checksums in `results/audits/`.
@@ -78,18 +79,14 @@ python scripts/retrain_complete_pipeline.py
 # Data and Models
 
 ## Data
-- **Frozen splits**: `data/frozen_splits/` with SHA256 checksums
-- **Full dataset**: Deposited on KiltHub with DOI
-- **Verify**: Use SHA256SUMS.txt to verify integrity
-
-See `data/README_DATA.md` for details.
+- **Frozen splits**: `data/frozen_splits/` (train/val/test CSVs) with `SHA256SUMS.txt`
+- **Samples**: `data/samples/` provides example inputs used in the paper
+- **Integrity check**: recompute hashes with `certutil -hashfile <file> SHA256`
 
 ## Models
-- **Configs and tokenizers**: Included in `models/`
-- **Model weights**: Hosted separately with DOI links in KiltHub record
-- **Size**: ~500MB per checkpoint
-
-See `models/README_MODELS.md` for details.
+- `models/final_backbone/`: frozen DeBERTa config, tokenizer, and calibration JSON
+- `models/regex/`: baseline pattern list used for comparison experiments
+- Large checkpoint binaries are tracked via Git LFS; see `.gitattributes`
 
 # Paper Build
 
@@ -109,20 +106,15 @@ Paper output: `paper/paper.pdf`
 # Artifact Map
 
 ## Paper
-- `paper/paper.pdf` - Main paper
-- `paper/tex/main.tex` - LaTeX source
-- `paper/README_figure_map.md` - Figure provenance
+- `paper/tex/main.tex` – LaTeX source
+- `paper/figs/` – figure assets referenced from the manuscript
+- `paper/tables/` – CSV and TeX tables imported into the paper
 
-## Results and Audits
-- `results/audits/finality_report_complete.md` - Complete audit report
-- `results/model_comparison_summary.csv` - Summary metrics
-- `results/per_class_comparison_summary.csv` - Per-class metrics
-
-## Figures
-All figures referenced in paper:
-- `paper/figs/model_comparison_bar_chart.png`
-- `paper/figs/per_class_comparison_bar_chart.png`
-- `paper/figs/comprehensive_model_comparison.png`
+## Results
+- `results/final_eval/` – frozen evaluation outputs for abstaining and non-abstaining models
+- `results/verified_final/` – selective prediction metrics with bootstrap confidence intervals
+- `results/model_comparison_summary.csv` – headline metrics for three model variants
+- `results/per_class_comparison_summary.csv` – per-class macro metrics
 
 # Citation
 
@@ -146,7 +138,7 @@ All figures referenced in paper:
 
 - **Code**: MIT (see `LICENSE`)
 - **Paper**: CC BY 4.0 (see `LICENSE_PAPER.txt`)
-- **Data**: To be specified at KiltHub deposition
+- **Data**: Not redistributed here; contact maintainers for access details
 
 # Contact
 
@@ -155,46 +147,48 @@ Email: mizinmax22@gmail.com
 # Repository Structure
 
 ```
-ModelExpansion/
-├── README.md                    # This file
-├── CONTRIBUTING.md              # Contribution guidelines
-├── requirements.txt             # Python dependencies
-├── LICENSE                      # MIT license
-├── LICENSE_PAPER.txt            # CC BY 4.0 license
-├── CITATION.cff                 # Citation metadata
-├── SHA256SUMS.txt               # File integrity checksums
+FoodLens/
+├── README.md                  # Project overview and replication guide
+├── CONTRIBUTING.md            # Contribution guidelines
+├── requirements.txt           # Python dependencies
+├── CITATION.cff               # Citation metadata
+├── LICENSE                    # MIT license for code
+├── LICENSE_PAPER.txt          # CC BY 4.0 license for manuscript
 │
-├── data/                        # Data files
-│   ├── frozen_splits/          # Train/val/test splits
-│   ├── samples/                 # Sample data
-│   └── README_DATA.md           # Data documentation
+├── data/
+│   ├── frozen_splits/         # Train/val/test CSVs + SHA256SUMS.txt
+│   └── samples/               # Example ingredient snippets
 │
-├── models/                      # Model checkpoints
-│   ├── final_backbone/         # Trained DeBERTa model
-│   ├── regex/                  # Baseline patterns
-│   └── README_MODELS.md        # Model documentation
+├── models/
+│   ├── final_backbone/        # Final DeBERTa configuration + tokenizer
+│   └── regex/                 # Baseline pattern file
 │
-├── results/                     # Evaluation results
-│   ├── audits/                 # Audit reports
-│   ├── final_eval/             # Final evaluation
-│   └── abstention_comparison/  # Abstention analysis
+├── results/
+│   ├── final_eval/            # Frozen evaluation outputs (CSV + confusion matrices)
+│   ├── verified_final/        # Bootstrap summaries for released models
+│   ├── model_comparison_summary.csv
+│   └── per_class_comparison_summary.csv
 │
-├── paper/                       # Complete paper package
-│   ├── tex/                    # LaTeX source (main.tex, refs/)
-│   ├── figs/                   # All figures for paper
-│   ├── tables/                 # All tables for paper
-│   ├── snippets/               # Method comparisons
-│   ├── Makefile                # Build rules
-│   ├── README_figure_map.md    # Figure provenance
-│   └── paper.pdf               # Compiled paper (after build)
+├── dist/
+│   ├── fairness_analysis_table.csv
+│   ├── fairness_table.tex
+│   ├── full_test_predictions.csv
+│   └── harder_subset_*        # CSVs for auxiliary analyses
 │
-├── scripts/                     # Python scripts
-│   ├── paper/                  # Paper utilities
-│   ├── export/                 # Export scripts
-│   └── [evaluation scripts]
+├── paper/
+│   ├── tex/                   # LaTeX source (main.tex)
+│   ├── figs/                  # Figures referenced in the paper
+│   └── tables/                # Tables imported by LaTeX
 │
-├── docs/                        # Documentation
-└── dist/                        # Distribution packages
+└── scripts/
+    ├── complete_evaluate_pipeline.py
+    ├── compute_ece_from_saved_data.py
+    ├── config.py
+    ├── freeze_and_evaluate_best.py
+    ├── optimize_abstention_methods.py
+    ├── retrain_complete_pipeline.py
+    ├── verify_accuracy_from_scratch.py
+    └── verify_all_metrics.py
 ```
 
 # Build Status
