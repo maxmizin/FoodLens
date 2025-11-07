@@ -1,5 +1,5 @@
 # View the Research Paper
-🔗 Click the image to read the full paper
+- Click the *image* below to read the *full paper*
 
 [![FoodLens paper preview](./FoodLens%20-%20Preview.png)](./FoodLens%20-%20Maximilian%20Mizin.pdf)
 
