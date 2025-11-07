@@ -1,8 +1,7 @@
 # View the Research Paper
+🔗 Click the image to read the full paper
 
 [![FoodLens paper preview](./FoodLens%20-%20Preview.png)](./FoodLens%20-%20Maximilian%20Mizin.pdf)
-
-Click the preview above to view the full research paper (PDF).
 
 # FoodLens: Selective Prediction for Nut Allergen Detection
 
